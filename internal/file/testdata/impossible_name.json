@@ -1,0 +1,316 @@
+{
+    "apiVersion": "v1",
+    "kind": "Pod",
+    "metadata": {
+        "annotations": {
+            "kubernetes.io/config.hash": "bc3eca0122540ccc59e959a7805e87e8",
+            "kubernetes.io/config.mirror": "bc3eca0122540ccc59e959a7805e87e8",
+            "kubernetes.io/config.seen": "2020-10-05T08:47:31.02161874Z",
+            "kubernetes.io/config.source": "file"
+        },
+        "creationTimestamp": "2020-10-05T08:49:09Z",
+        "labels": {
+            "component": "etcd",
+            "tier": "control-plane"
+        },
+        "managedFields": [
+            {
+                "apiVersion": "v1",
+                "fieldsType": "FieldsV1",
+                "fieldsV1": {
+                    "f:metadata": {
+                        "f:annotations": {
+                            ".": {},
+                            "f:kubernetes.io/config.hash": {},
+                            "f:kubernetes.io/config.mirror": {},
+                            "f:kubernetes.io/config.seen": {},
+                            "f:kubernetes.io/config.source": {}
+                        },
+                        "f:labels": {
+                            ".": {},
+                            "f:component": {},
+                            "f:tier": {}
+                        }
+                    },
+                    "f:spec": {
+                        "f:containers": {
+                            "k:{\"name\":\"etcd\"}": {
+                                ".": {},
+                                "f:command": {},
+                                "f:image": {},
+                                "f:imagePullPolicy": {},
+                                "f:livenessProbe": {
+                                    ".": {},
+                                    "f:failureThreshold": {},
+                                    "f:httpGet": {
+                                        ".": {},
+                                        "f:host": {},
+                                        "f:path": {},
+                                        "f:port": {},
+                                        "f:scheme": {}
+                                    },
+                                    "f:initialDelaySeconds": {},
+                                    "f:periodSeconds": {},
+                                    "f:successThreshold": {},
+                                    "f:timeoutSeconds": {}
+                                },
+                                "f:name": {},
+                                "f:resources": {},
+                                "f:terminationMessagePath": {},
+                                "f:terminationMessagePolicy": {},
+                                "f:volumeMounts": {
+                                    ".": {},
+                                    "k:{\"mountPath\":\"/run/config/pki/etcd\"}": {
+                                        ".": {},
+                                        "f:mountPath": {},
+                                        "f:name": {}
+                                    },
+                                    "k:{\"mountPath\":\"/var/lib/etcd\"}": {
+                                        ".": {},
+                                        "f:mountPath": {},
+                                        "f:name": {}
+                                    }
+                                }
+                            }
+                        },
+                        "f:dnsPolicy": {},
+                        "f:enableServiceLinks": {},
+                        "f:hostNetwork": {},
+                        "f:nodeName": {},
+                        "f:priorityClassName": {},
+                        "f:restartPolicy": {},
+                        "f:schedulerName": {},
+                        "f:securityContext": {},
+                        "f:terminationGracePeriodSeconds": {},
+                        "f:tolerations": {},
+                        "f:volumes": {
+                            ".": {},
+                            "k:{\"name\":\"etcd-certs\"}": {
+                                ".": {},
+                                "f:hostPath": {
+                                    ".": {},
+                                    "f:path": {},
+                                    "f:type": {}
+                                },
+                                "f:name": {}
+                            },
+                            "k:{\"name\":\"etcd-data\"}": {
+                                ".": {},
+                                "f:hostPath": {
+                                    ".": {},
+                                    "f:path": {},
+                                    "f:type": {}
+                                },
+                                "f:name": {}
+                            }
+                        }
+                    },
+                    "f:status": {
+                        "f:conditions": {
+                            ".": {},
+                            "k:{\"type\":\"ContainersReady\"}": {
+                                ".": {},
+                                "f:lastProbeTime": {},
+                                "f:lastTransitionTime": {},
+                                "f:status": {},
+                                "f:type": {}
+                            },
+                            "k:{\"type\":\"Initialized\"}": {
+                                ".": {},
+                                "f:lastProbeTime": {},
+                                "f:lastTransitionTime": {},
+                                "f:status": {},
+                                "f:type": {}
+                            },
+                            "k:{\"type\":\"PodScheduled\"}": {
+                                ".": {},
+                                "f:lastProbeTime": {},
+                                "f:lastTransitionTime": {},
+                                "f:status": {},
+                                "f:type": {}
+                            },
+                            "k:{\"type\":\"Ready\"}": {
+                                ".": {},
+                                "f:lastProbeTime": {},
+                                "f:lastTransitionTime": {},
+                                "f:status": {},
+                                "f:type": {}
+                            }
+                        },
+                        "f:containerStatuses": {},
+                        "f:hostIP": {},
+                        "f:phase": {},
+                        "f:podIP": {},
+                        "f:podIPs": {
+                            ".": {},
+                            "k:{\"ip\":\"192.168.65.3\"}": {
+                                ".": {},
+                                "f:ip": {}
+                            }
+                        },
+                        "f:qosClass": {},
+                        "f:startTime": {}
+                    }
+                },
+                "manager": "kubelet",
+                "operation": "Update",
+                "time": "2020-10-23T06:15:05Z"
+            }
+        ],
+        "name": "\\impoossible////",
+        "namespace": "kube-system",
+        "resourceVersion": "808047",
+        "selfLink": "/api/v1/namespaces/kube-system/pods/etcd-docker-desktop",
+        "uid": "f71653b6-427d-4f5f-a8e3-f024fece0a2d"
+    },
+    "spec": {
+        "containers": [
+            {
+                "command": [
+                    "etcd",
+                    "--advertise-client-urls=https://192.168.65.3:2379",
+                    "--cert-file=/run/config/pki/etcd/server.crt",
+                    "--client-cert-auth=true",
+                    "--data-dir=/var/lib/etcd",
+                    "--initial-advertise-peer-urls=https://192.168.65.3:2380",
+                    "--initial-cluster=docker-desktop=https://192.168.65.3:2380",
+                    "--key-file=/run/config/pki/etcd/server.key",
+                    "--listen-client-urls=https://127.0.0.1:2379,https://192.168.65.3:2379",
+                    "--listen-metrics-urls=http://127.0.0.1:2381",
+                    "--listen-peer-urls=https://192.168.65.3:2380",
+                    "--name=docker-desktop",
+                    "--peer-cert-file=/run/config/pki/etcd/peer.crt",
+                    "--peer-client-cert-auth=true",
+                    "--peer-key-file=/run/config/pki/etcd/peer.key",
+                    "--peer-trusted-ca-file=/run/config/pki/etcd/ca.crt",
+                    "--snapshot-count=10000",
+                    "--trusted-ca-file=/run/config/pki/etcd/ca.crt"
+                ],
+                "image": "k8s.gcr.io/etcd:3.3.15-0",
+                "imagePullPolicy": "IfNotPresent",
+                "livenessProbe": {
+                    "failureThreshold": 8,
+                    "httpGet": {
+                        "host": "127.0.0.1",
+                        "path": "/health",
+                        "port": 2381,
+                        "scheme": "HTTP"
+                    },
+                    "initialDelaySeconds": 15,
+                    "periodSeconds": 10,
+                    "successThreshold": 1,
+                    "timeoutSeconds": 15
+                },
+                "name": "etcd",
+                "resources": {},
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File",
+                "volumeMounts": [
+                    {
+                        "mountPath": "/var/lib/etcd",
+                        "name": "etcd-data"
+                    },
+                    {
+                        "mountPath": "/run/config/pki/etcd",
+                        "name": "etcd-certs"
+                    }
+                ]
+            }
+        ],
+        "dnsPolicy": "ClusterFirst",
+        "enableServiceLinks": true,
+        "hostNetwork": true,
+        "nodeName": "docker-desktop",
+        "priority": 2000000000,
+        "priorityClassName": "system-cluster-critical",
+        "restartPolicy": "Always",
+        "schedulerName": "default-scheduler",
+        "securityContext": {},
+        "terminationGracePeriodSeconds": 30,
+        "tolerations": [
+            {
+                "effect": "NoExecute",
+                "operator": "Exists"
+            }
+        ],
+        "volumes": [
+            {
+                "hostPath": {
+                    "path": "/run/config/pki/etcd",
+                    "type": "DirectoryOrCreate"
+                },
+                "name": "etcd-certs"
+            },
+            {
+                "hostPath": {
+                    "path": "/var/lib/etcd",
+                    "type": "DirectoryOrCreate"
+                },
+                "name": "etcd-data"
+            }
+        ]
+    },
+    "status": {
+        "conditions": [
+            {
+                "lastProbeTime": null,
+                "lastTransitionTime": "2020-10-23T06:14:59Z",
+                "status": "True",
+                "type": "Initialized"
+            },
+            {
+                "lastProbeTime": null,
+                "lastTransitionTime": "2020-10-23T06:15:01Z",
+                "status": "True",
+                "type": "Ready"
+            },
+            {
+                "lastProbeTime": null,
+                "lastTransitionTime": "2020-10-23T06:15:01Z",
+                "status": "True",
+                "type": "ContainersReady"
+            },
+            {
+                "lastProbeTime": null,
+                "lastTransitionTime": "2020-10-23T06:14:59Z",
+                "status": "True",
+                "type": "PodScheduled"
+            }
+        ],
+        "containerStatuses": [
+            {
+                "containerID": "docker://092746a6ad00fa3e459a3c61bc9d458ba2af19a0f0c6e9c8460cc470db6b92ab",
+                "image": "k8s.gcr.io/etcd:3.3.15-0",
+                "imageID": "docker-pullable://k8s.gcr.io/etcd@sha256:12c2c5e5731c3bcd56e6f1c05c0f9198b6f06793fa7fca2fb43aab9622dc4afa",
+                "lastState": {
+                    "terminated": {
+                        "containerID": "docker://98cd3331fe724ba6297c27b052c31f29b8f1a5006c9b79dd62098ca869eb3705",
+                        "exitCode": 255,
+                        "finishedAt": "2020-10-23T06:14:51Z",
+                        "reason": "Error",
+                        "startedAt": "2020-10-05T08:47:37Z"
+                    }
+                },
+                "name": "etcd",
+                "ready": true,
+                "restartCount": 1,
+                "started": true,
+                "state": {
+                    "running": {
+                        "startedAt": "2020-10-23T06:15:00Z"
+                    }
+                }
+            }
+        ],
+        "hostIP": "192.168.65.3",
+        "phase": "Running",
+        "podIP": "192.168.65.3",
+        "podIPs": [
+            {
+                "ip": "192.168.65.3"
+            }
+        ],
+        "qosClass": "BestEffort",
+        "startTime": "2020-10-23T06:14:59Z"
+    }
+}
