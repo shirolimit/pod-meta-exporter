@@ -1,4 +1,7 @@
 # pod-meta-exporter
+![build status](https://img.shields.io/docker/cloud/build/shirolimit/pod-meta-exporter)
+![build automation](https://img.shields.io/docker/cloud/automated/shirolimit/pod-meta-exporter)
+![license](https://img.shields.io/github/license/shirolimit/pod-meta-exporter)
 
 Utility that tracks pods on a node and exports pod metadata to files.
 
