@@ -28,9 +28,9 @@ $ make build
 
 | Command line arg | Environment variable | Description | Default value |
 | --- | --- | --- | --- |
-| `node-name` | `NODE_NAME` | The name of a node to track pods on. | `HOSTNAME` |
-| `destination-dir` | `DESTINATION_DIR` | The path to a directory to put files to. | `/var/kube_meta` |
-| `retention-period` | `RETENTION_PERIOD` | The amount of time to keep a file with metadata after a pod was deleted. | `1m` |
+| `node-name` | `EXPORTER_NODE_NAME` | The name of a node to track pods on. | `HOSTNAME` |
+| `destination-dir` | `EXPORTER_DESTINATION_DIR` | The path to a directory to put files to. | `/var/kube_meta` |
+| `retention-period` | `EXPORTER_RETENTION_PERIOD` | The amount of time to keep a file with metadata after a pod was deleted. | `1m` |
 
 Example:
 
@@ -89,18 +89,24 @@ spec:
             - name: varlibdockercontainers
               mountPath: /var/lib/docker/containers
               readOnly: true
+            - name: k8s-meta
+              mountPath: /var/kube_meta
+              readOnly: true
         - name: pod-meta-exporter
           image: shirolimit/pod-meta-exporter:latest
           imagePullPolicy: IfNotPresent
           env:
-            - name: NODE_NAME
+            - name: EXPORTER_NODE_NAME
               valueFrom:
                 fieldRef:
                   fieldPath: spec.nodeName
-            - name: RETENTION_PERIOD
+            - name: EXPORTER_RETENTION_PERIOD
               value: "5m"
-            - name: DESTINATION_DIR
+            - name: EXPORTER_DESTINATION_DIR
               value: "/var/kube_meta"
+          volumeMounts:
+            - name: k8s-meta
+              mountPath: /var/kube_meta
       volumes:
         - name: varlog
           hostPath:
@@ -108,5 +114,7 @@ spec:
         - name: varlibdockercontainers
           hostPath:
             path: /var/lib/docker/containers
+        - name: k8s-meta
+          emptyDir: {}
       serviceAccountName: fluent-bit-service-account
 ```
