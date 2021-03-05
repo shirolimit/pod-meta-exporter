@@ -45,12 +45,16 @@ func NewPodMetaWriter(directory string, retention time.Duration, logger *log.Log
 
 // Handle handles PodEvent. The exact behaviour depends on event type:
 //  - ADDED event - creates or updates file with metadata
+//  - MODIFIED event - creates or updates file with metadata
 //  - DELETED event - marks file for cleanup
+//
+// We need to update file on MODIFIED event because ADDED can be sent when pod is still in a Pending state.
+// As a result Fluent Bit won't be able to get container_image and container_hash from it.
 func (w *PodMetaWriter) Handle(event exporter.PodEvent) error {
 	w.deleteOldFiles()
 
 	switch event.Type {
-	case watch.Added:
+	case watch.Added, watch.Modified:
 		return w.createOrUpdateFile(event.Meta)
 	case watch.Deleted:
 		w.scheduleForDeletion(event.Meta)

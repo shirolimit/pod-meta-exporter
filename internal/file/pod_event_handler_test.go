@@ -60,7 +60,7 @@ func (s *PodMetaWriterSuite) Test_ShouldReturnErrorOnFileCreationFailure() {
 	assert.Error(s.T(), err)
 }
 
-func (s *PodMetaWriterSuite) Test_ShouldNotCreateFileOnModifiedEvent() {
+func (s *PodMetaWriterSuite) Test_ShouldCreateFileOnModifiedEvent() {
 	writer := file.NewPodMetaWriter(s.dir, 1*time.Minute, nopLogger())
 	expectedFile := filepath.Join(s.dir, "kube-system_etcd-docker-desktop.meta")
 
@@ -72,7 +72,7 @@ func (s *PodMetaWriterSuite) Test_ShouldNotCreateFileOnModifiedEvent() {
 	err := writer.Handle(event)
 
 	assert.NoError(s.T(), err)
-	assert.False(s.T(), fileExists(expectedFile))
+	assert.FileExists(s.T(), expectedFile)
 }
 
 func (s *PodMetaWriterSuite) Test_ShouldDeleteFileAfterRetention() {
